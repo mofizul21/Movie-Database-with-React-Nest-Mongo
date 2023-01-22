@@ -1,6 +1,7 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +19,6 @@ import { CircularProgress } from '@mui/material';
 import useInput from '../../../hooks/input/use-inputs';
 import { login, reset } from '../AuthSlice';
 
-
 function Copyright(props: any) {
 	return (
 		<Typography
@@ -30,9 +30,9 @@ function Copyright(props: any) {
 			{'Copyright © '}
 			<Link
 				style={{ color: 'rgba(0, 0, 0, 0.6)' }}
-				to="https://mofizul.com/"
+				to="https://mofizul.com"
 			>
-				https://mofizul.com/
+				https://mofizul.com
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -45,9 +45,9 @@ const theme = createTheme();
 const SigninFormComponent: FC = () => {
 	const navigate = useNavigate();
 
-    // Check user state and return
-    const storedUser: string | null = localStorage.getItem('user');
-    useEffect(() => {
+	// Check user state and return
+	const storedUser: string | null = localStorage.getItem('user');
+	useEffect(() => {
 		if (storedUser) {
 			navigate('/');
 		}
@@ -76,10 +76,9 @@ const SigninFormComponent: FC = () => {
 
 	const dispatch = useAppDispatch();
 
-	const { isLoading, isSuccess, isAuthenticated } = useAppSelector(
+	const { isLoading, isSuccess, isAuthenticated, isError } = useAppSelector(
 		(state) => state.auth
 	);
-
 
 	useEffect(() => {
 		if (isSuccess) {
@@ -172,6 +171,13 @@ const SigninFormComponent: FC = () => {
 									: ''
 							}
 						/>
+
+						{isError && !isSuccess && (
+							<Alert severity="error">
+								Please check your credentials.
+							</Alert>
+						)}
+
 						<Button
 							type="submit"
 							fullWidth
