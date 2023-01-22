@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import { Link, useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -86,7 +87,7 @@ const RegistrationFormcomponent: FC = () => {
 	};
 
 	const dispatch = useAppDispatch();
-	const { isLoading, isSuccess } = useAppSelector((state) => state.auth);
+	const { isLoading, isSuccess, isError } = useAppSelector((state) => state.auth);
 
 	const navigate = useNavigate();
     
@@ -238,6 +239,13 @@ const RegistrationFormcomponent: FC = () => {
 									: ''
 							}
 						/>
+
+						{isError && !isSuccess && (
+							<Alert severity="error">
+								Maybe the email is already taken! Please try with different one.
+							</Alert>
+						)}
+
 						<Button
 							type="submit"
 							fullWidth
