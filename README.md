@@ -1,20 +1,20 @@
-# Eval-Tylas-Favourite-Movies
-
+# Movie Database with React JS, Redux, Nest JS & MongoDB
 ## How to run
 
-You need Docker for running the project. After installing the Docker, open it.
+It would help if you used Docker to run the project. After you install Docker, please open it.
 
 From the root folder, run the command `docker-compose up -d`.
 
-Now to go *the backend* and run `npm install`. Then run the backend with this command `nest start --watch`.
+Now go to the *backend* and run `npm install`. Then run the backend with this command `nest start --watch`.
 
-Again goes to the *frontend* folder and runs `npm install`. Then run the frontend with this command `npm start`.
+Again go to the *frontend* folder and run `npm install`. Then run the frontend with this command `npm start`.
 
 ## Features
 
 1. Register
 2. Login
 3. CRUD Operations
+4. REST API
 
 ## What I have used
 
